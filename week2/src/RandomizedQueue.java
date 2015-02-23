@@ -55,7 +55,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     public Iterator<Item> iterator() {
         if (isEmpty())
-            throw new NoSuchElementException("Stack underflow");
+            return null;
         return new ArrayIterator();
     }
 
