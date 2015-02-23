@@ -29,9 +29,11 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     public Item dequeue() {
         if (isEmpty())
             throw new NoSuchElementException("Stack underflow");
-        StdRandom.shuffle(s, 0, N - 1);
-        Item item = s[--N];
-        s[N] = null;
+        int index = StdRandom.uniform(N);
+        Item item = s[index];
+        s[index] = s[N - 1];
+        s[N - 1] = null;
+        N--;
         if (N > 0 && N == s.length / 4)
             resize(s.length / 2);
         return item;
@@ -52,6 +54,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     public Iterator<Item> iterator() {
+        if (isEmpty())
+            throw new NoSuchElementException("Stack underflow");
         return new ArrayIterator();
     }
 
@@ -68,9 +72,11 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     private class ArrayIterator implements Iterator<Item> {
         private int i = 0;
+        private int[] rand = new int[N];
 
         public ArrayIterator() {
-            StdRandom.shuffle(s, 0, N - 1);
+            for (int j = 0; j < N; j++)
+                rand[j] = j;
         }
 
         public boolean hasNext() {
@@ -84,9 +90,11 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         public Item next() {
             if (!hasNext())
                 throw new NoSuchElementException();
-            Item item = s[i];
-            i++;
-            return item;
+            int randomIndex = StdRandom.uniform(i, N);
+            int k = rand[randomIndex];
+            rand[randomIndex] = rand[i];
+            rand[i++] = k;
+            return s[k];
         }
     }
 
@@ -99,11 +107,11 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             if (StdIn.isEmpty())
                 break;
         }
-        // StdOut.println(sop.show());
-        while (!sop.isEmpty()) {
-            String p = sop.dequeue();
-            StdOut.println(p);
-        }
+         StdOut.println(sop.show());
+//        while (!sop.isEmpty()) {
+//            String p = sop.dequeue();
+//            StdOut.println(p);
+//        }
     }
 
 }
