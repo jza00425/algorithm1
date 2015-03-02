@@ -13,7 +13,6 @@
 import java.util.Comparator;
 
 public class Point implements Comparable<Point> {
-
     // compare points by slope
     public final Comparator<Point> SLOPE_ORDER = new BySlope(); // YOUR DEFINITION HERE
 
