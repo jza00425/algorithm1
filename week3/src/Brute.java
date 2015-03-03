@@ -26,12 +26,12 @@ public class Brute {
                 if (set[i].slopeTo(set[j]) == Double.NEGATIVE_INFINITY)
                     continue;
                 for (int k = j + 1; k < N; k++) {
-                    if ((set[i].slopeTo(set[j]) != set[i].slopeTo(set[k])) ||
-                        (set[j].slopeTo(set[k]) == Double.NEGATIVE_INFINITY))
+                    if ((set[i].slopeTo(set[j]) != set[i].slopeTo(set[k])) 
+                        || (set[j].slopeTo(set[k]) == Double.NEGATIVE_INFINITY))
                         continue;
                     for (int l = k + 1; l < N; l++) {
-                        if ((set[i].slopeTo(set[l]) != set[i].slopeTo(set[k])) ||
-                            (set[k].slopeTo(set[l]) == Double.NEGATIVE_INFINITY))
+                        if ((set[i].slopeTo(set[l]) != set[i].slopeTo(set[k])) 
+                            || (set[k].slopeTo(set[l]) == Double.NEGATIVE_INFINITY))
                             continue;
                         else {
                             s = "";

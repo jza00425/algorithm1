@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.ArrayList;
 public class Fast {
     
     
@@ -7,7 +10,7 @@ public class Fast {
         // rescale coordinates and turn on animation mode
         StdDraw.setXscale(0, 32768);
         StdDraw.setYscale(0, 32768);
-        StdDraw.setPenRadius(0.01);  // make the points a bit larger
+//        StdDraw.setPenRadius(0.01);  // make the points a bit larger
 
         // read in the input
         String filename = args[0];
@@ -22,7 +25,7 @@ public class Fast {
             set[i] = new Point(x, y);
             set[i].draw();
         }
-        StdDraw.show(0);
+//        StdDraw.show(0);
         Arrays.sort(set);
         for (int i = 0; i < N; i++)
             aux[i] = set[i];
@@ -61,6 +64,7 @@ public class Fast {
                         }
                     }
                     cnt = 1;
+                    result.clear();
                     s = set[i].toString();
                 }
             }

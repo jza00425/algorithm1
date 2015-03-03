@@ -14,7 +14,7 @@ import java.util.Comparator;
 
 public class Point implements Comparable<Point> {
     // compare points by slope
-    public final Comparator<Point> SLOPE_ORDER = new BySlope(); // YOUR DEFINITION HERE
+    public final Comparator<Point> SLOPE_ORDER = new BySlope();
 
     private final int x;                              // x coordinate
     private final int y;                              // y coordinate
@@ -53,8 +53,8 @@ public class Point implements Comparable<Point> {
 
     // slope between this point and that point
     public double slopeTo(Point that) {
-        double yDiff = (double)(that.y - this.y);
-        double xDiff = (double)(that.x - this.x);
+        double yDiff = (double) (that.y - this.y);
+        double xDiff = (double) (that.x - this.x);
         if ((xDiff == 0.0) && (yDiff == 0.0))
             return Double.NEGATIVE_INFINITY;
         if (xDiff == 0.0)
