@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 
 public class PointSET {
     private SET<Point2D> mySet;
